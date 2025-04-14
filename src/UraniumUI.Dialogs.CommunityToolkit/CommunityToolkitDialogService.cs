@@ -470,7 +470,7 @@ public class CommunityToolkitDialogService : CommunityToolkitDialogServiceBase, 
             }) },
             { cancelText, new Command(() =>
             {
-                tcs.SetResult();
+                tcs.SetException(new Exception("The dialog was canceled by user input."));
                 popup.Close();
             }) }
         });

@@ -57,7 +57,7 @@ public class DefaultDialogService : IDialogService
                         {
                             cancelText, new Command(async () =>
                             {
-                                tcs.SetResult(true);
+                                tcs.SetResult(false);
 
                                 if (Page.Navigation.ModalStack.LastOrDefault() is DefaultDialogAnimatedContentPage _popupPage)
                                 {

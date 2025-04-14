@@ -113,7 +113,13 @@ public partial class DialogsPage : ContentPage
 
     private async void OpenCustomPrompt(object sender, EventArgs e)
     {
-        await DialogService.DisplayViewAsync("Custom content", new MyCustomControl(), "OK");
+        try
+        {
+            await DialogService.DisplayViewAsync("Custom content", new MyCustomControl(), "OK");
+        }
+        catch (Exception ex)
+        {
+        }
 
         // labelConfirmation.Text = "Result: " + result;
     }
