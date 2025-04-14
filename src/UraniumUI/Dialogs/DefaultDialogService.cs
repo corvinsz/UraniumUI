@@ -27,7 +27,7 @@ public class DefaultDialogService : IDialogService
         return this;
     }
 
-    public Task DisplayViewAsync(string title, View content, string okText = "OK")
+    public Task DisplayViewAsync(string title, View content, string okText = "OK", string cancelText = "Cancel")
     {
         var tcs = new TaskCompletionSource<bool>();
 
@@ -45,6 +45,17 @@ public class DefaultDialogService : IDialogService
                     {
                         {
                             okText, new Command(async () =>
+                            {
+                                tcs.SetResult(true);
+
+                                if (Page.Navigation.ModalStack.LastOrDefault() is DefaultDialogAnimatedContentPage _popupPage)
+                                {
+                                   await _popupPage.CloseAsync();
+                                }
+                            })
+                        },
+                        {
+                            cancelText, new Command(async () =>
                             {
                                 tcs.SetResult(true);
 

@@ -167,7 +167,7 @@ public class MopupsDialogService : IDialogService
         rootGrid.Add(GetHeader(message));
         rootGrid.Add(new ScrollView { Content = checkBoxGroup, VerticalOptions = LayoutOptions.Start, MaximumHeightRequest = Page.Height * 0.6, }, row: 1);
         rootGrid.Add(GetDivider(), row: 2);
-        rootGrid.Add(GetFooter( new Dictionary<string, Command>
+        rootGrid.Add(GetFooter(new Dictionary<string, Command>
         {
             { accept, new Command(() =>
             {
@@ -178,7 +178,7 @@ public class MopupsDialogService : IDialogService
             {
                 tcs.TrySetResult(null);
                 MopupService.Instance.RemovePageAsync(popup);
-            }) } 
+            }) }
         }), row: 3);
 
         await MopupService.Instance.PushAsync(popup);
@@ -321,7 +321,7 @@ public class MopupsDialogService : IDialogService
         return await tcs.Task;
     }
 
-    public virtual Task DisplayViewAsync(string title, View content, string okText = "OK")
+    public virtual Task DisplayViewAsync(string title, View content, string okText = "OK", string cancelText = "Cancel")
     {
         var popup = new PopupPage
         {

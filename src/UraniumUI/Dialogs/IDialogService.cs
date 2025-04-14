@@ -7,7 +7,8 @@ public interface IDialogService
     Task DisplayViewAsync(
         string title,
         View content,
-        string okText = "OK");
+        string okText = "OK",
+        string cancelText = "Cancel");
 
     Task<IDisposable> DisplayProgressAsync(
         string title,

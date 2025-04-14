@@ -432,7 +432,7 @@ public class CommunityToolkitDialogService : CommunityToolkitDialogServiceBase, 
         return tcs.Task;
     }
 
-    public Task DisplayViewAsync(string title, View content, string okText = "OK")
+    public Task DisplayViewAsync(string title, View content, string okText = "OK", string cancelText = "Cancel")
     {
         var tcs = new TaskCompletionSource();
         var calculatedSize = CalculateSize(Page);
@@ -464,6 +464,11 @@ public class CommunityToolkitDialogService : CommunityToolkitDialogServiceBase, 
         var footer = GetFooter(new Dictionary<string, Command>
         {
             { okText, new Command(() =>
+            {
+                tcs.SetResult();
+                popup.Close();
+            }) },
+            { cancelText, new Command(() =>
             {
                 tcs.SetResult();
                 popup.Close();

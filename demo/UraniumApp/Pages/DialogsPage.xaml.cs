@@ -110,4 +110,22 @@ public partial class DialogsPage : ContentPage
 
         labelProgressCancellable.Text = tokenSource.Token.IsCancellationRequested ? "Cancelled" : "Completed!";
     }
+
+    private async void OpenCustomPrompt(object sender, EventArgs e)
+    {
+        await DialogService.DisplayViewAsync("Custom content", new MyCustomControl(), "OK");
+
+        // labelConfirmation.Text = "Result: " + result;
+    }
+}
+
+public class MyCustomControl : ContentView
+{
+    public MyCustomControl()
+    {
+        this.Content = new Label()
+        {
+            Text = "this is some custom content"
+        };
+    }
 }

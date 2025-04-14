@@ -16,8 +16,8 @@ public static class CommunityToolkitDialogExtensions
         string accept = "OK",
         string cancel = "Cancel")
     {
-       return GetService().WithPage(page)
-           .ConfirmAsync(title, message, accept, cancel);
+        return GetService().WithPage(page)
+            .ConfirmAsync(title, message, accept, cancel);
     }
 
     public static Task<IDisposable> DisplayProgressAsync(this Page page, string title, string message)
@@ -29,7 +29,7 @@ public static class CommunityToolkitDialogExtensions
     public static Task<IDisposable> DisplayProgressCancellableAsync(this Page page, string title, string message, string cancelText = "Cancel", CancellationTokenSource tokenSource = null)
     {
         return GetService().WithPage(page)
-            .DisplayProgressCancellableAsync(title, message, cancelText, tokenSource);  
+            .DisplayProgressCancellableAsync(title, message, cancelText, tokenSource);
     }
 
     public static Task<IEnumerable<T>> DisplayCheckBoxPromptAsync<T>(
